@@ -1,0 +1,25 @@
+@model RecetasMVC_Project.Models.Receta
+@{
+    ViewBag.Title = "Detalles de Receta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Detalles</h2>
+
+<div>
+    <h4>Receta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Nombre</dt>
+        <dd>@Html.DisplayFor(m => m.Nombre)</dd>
+
+        <dt>Instrucciones</dt>
+        <dd>@Html.DisplayFor(m => m.Instrucciones)</dd>
+
+        <dt>Tiempo de Preparación</dt>
+        <dd>@Html.DisplayFor(m => m.TiempoPreparacion)</dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Nombre }) |
+    @Html.ActionLink("Volver", "Index")
+</p>

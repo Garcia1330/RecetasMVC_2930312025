@@ -1,0 +1,30 @@
+@model RecetasMVC_Project.Models.Receta
+@{
+    ViewBag.Title = "Eliminar Receta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Eliminar</h2>
+
+<h3>¿Está seguro que desea eliminar esta receta?</h3>
+<div>
+    <h4>Receta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Nombre</dt>
+        <dd>@Html.DisplayFor(m => m.Nombre)</dd>
+
+        <dt>Instrucciones</dt>
+        <dd>@Html.DisplayFor(m => m.Instrucciones)</dd>
+
+        <dt>Tiempo de Preparación</dt>
+        <dd>@Html.DisplayFor(m => m.TiempoPreparacion)</dd>
+    </dl>
+</div>
+
+@using (Html.BeginForm("DeleteConfirmed", "Recetas", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Nombre)
+    <input type="submit" value="Eliminar" />
+    @Html.ActionLink("Cancelar", "Index")
+}

@@ -1,0 +1,37 @@
+@model IEnumerable<RecetasMVC_Project.Models.Receta>
+@{
+    ViewBag.Title = "Lista de Recetas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p>
+    @using (Html.BeginForm("Index", "Recetas", FormMethod.Get))
+    {
+        <input type="text" name="search" value="@ViewBag.Search" placeholder="Filtrar por nombre" />
+        <input type="submit" value="Filtrar" />
+        @Html.ActionLink("Crear Nueva Receta", "Create")
+    }
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Tiempo (min)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(m => item.Nombre)</td>
+            <td>@Html.DisplayFor(m => item.TiempoPreparacion)</td>
+            <td>
+                @Html.ActionLink("Detalles", "Details", new { id = item.Nombre }) |
+                @Html.ActionLink("Editar", "Edit", new { id = item.Nombre }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Nombre })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
